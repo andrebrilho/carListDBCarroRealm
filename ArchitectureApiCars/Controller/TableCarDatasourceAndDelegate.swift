@@ -46,8 +46,29 @@ class TableCarDatasourceAndDelegate: NSObject, UITableViewDataSource, UITableVie
             
         }
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 190
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        do {
+            AppDelegate.realmCarroDB.beginWrite()
+            let carro = dados[indexPath.row]
+            AppDelegate.realmCarroDB.delete(carro)
+            try
+            AppDelegate.realmCarroDB.commitWrite()
+            dados.remove(at: indexPath.row)
+            tableView.reloadData()
+        }catch{
+            print("erro")
+        }
     }
 }

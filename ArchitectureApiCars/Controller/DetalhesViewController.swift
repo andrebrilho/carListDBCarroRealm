@@ -22,12 +22,10 @@ class DetalhesViewController:UIViewController {
         super.viewDidLoad()
         lblNomeCarro.text = carro.nome
         txtDesc.text = carro.desc
-        imgCarro.af_setImage(withURL: URL(string:carro.url_foto!)!, filter: AspectScaledToFitSizeFilter(size: imgCarro.frame.size), imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: { (_) in
+        imgCarro.af_setImage(withURL: URL(string:carro.url_foto)!, filter: AspectScaledToFitSizeFilter(size: imgCarro.frame.size), imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: true, completion: { (_) in
             self.actIndicator.stopAnimating()
         }
         )}
-    
-    
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
     }

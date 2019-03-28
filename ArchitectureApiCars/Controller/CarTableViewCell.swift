@@ -27,7 +27,7 @@ class CarTableViewCell: UITableViewCell {
         imgCar.image = nil
         imgCar.af_cancelImageRequest()
         actIndicator.startAnimating()
-        imgCar.af_setImage(withURL: URL(string:((carro?.url_foto!)!))!, filter: AspectScaledToFitSizeFilter(size: CGSize(width: self.imgCar.frame.width, height: self.imgCar.frame.height)), imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: { (_) in
+        imgCar.af_setImage(withURL: URL(string:((carro?.url_foto))!)!, filter: AspectScaledToFitSizeFilter(size: CGSize(width: self.imgCar.frame.width, height: self.imgCar.frame.height)), imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: { (_) in
             self.actIndicator.stopAnimating()
         })
     }
